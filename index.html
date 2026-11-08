@@ -1,0 +1,767 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KeshavPlayz | Gaming Portfolio</title>
+
+<style>
+:root {
+  --bg: #08111f;
+  --card: #111e31;
+  --text: #f3f6ff;
+  --muted: #a8b5ca;
+  --accent: #38bdf8;
+  --accent2: #8b5cf6;
+  --border: #26364d;
+}
+
+body.light {
+  --bg: #f1f5fb;
+  --card: #ffffff;
+  --text: #172033;
+  --muted: #64748b;
+  --accent: #0284c7;
+  --accent2: #7c3aed;
+  --border: #dbe4ef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: 0.3s;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 15px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-weight: bold;
+}
+
+.theme-btn {
+  background: var(--accent);
+  color: #06111e;
+}
+
+section {
+  padding: 75px 8%;
+}
+
+.hero {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at 80% 30%, #164e6380, transparent 35%),
+    radial-gradient(circle at 15% 80%, #6d28d980, transparent 35%);
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.1;
+  margin: 18px 0;
+}
+
+h1 span, h2 span {
+  color: var(--accent);
+}
+
+.hero p, .section-intro {
+  color: var(--muted);
+  max-width: 650px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.primary-btn {
+  background: var(--accent);
+  color: #06111e;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.secondary-btn {
+  border: 1px solid var(--accent);
+  color: var(--text);
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.big-icon {
+  font-size: 35px;
+}
+
+.stat-number {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.goal-box {
+  background: linear-gradient(130deg, #0e7490, #4338ca);
+  border-radius: 18px;
+  padding: 30px;
+  color: white;
+  margin-top: 25px;
+}
+
+.goal-box p {
+  color: #e0f2fe;
+}
+
+.progress-track {
+  width: 100%;
+  height: 15px;
+  background: #ffffff45;
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #67e8f9;
+  border-radius: 30px;
+  transition: width 0.5s;
+}
+
+.goal-card {
+  text-align: center;
+}
+
+.goal-card.reached {
+  border-color: #22c55e;
+}
+
+.goal-status {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: var(--border);
+}
+
+.goal-card.reached .goal-status {
+  background: #166534;
+  color: white;
+}
+
+.video-thumb {
+  min-height: 135px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #164e63, #6d28d9);
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.video-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 12px;
+}
+
+.video-card iframe {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 9 / 16;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px;
+  border: 0;
+  border-radius: 12px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: var(--card);
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+@media(max-width: 650px) {
+  header {
+    justify-content: center;
+  }
+  nav {
+    justify-content: center;
+  }
+  section {
+    padding: 55px 6%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎮 KeshavPlayz</div>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#interests">Interests</a>
+    <a href="#stats">Stats</a>
+    <a href="#goals">My Goals</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#videos">Videos</a>
+  </nav>
+
+  <button class="theme-btn" onclick="toggleTheme()" id="themeButton">
+    ☀️ Light Mode
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">Welcome to my gaming world</div>
+
+    <h1>Hey, I'm <span>Keshav!</span></h1>
+
+    <h2>Welcome to <span>KeshavPlayz</span> 🎮</h2>
+
+    <p>
+      I'm a gaming enthusiast who loves exploring games,
+      creating fun videos and learning new digital skills.
+      This is my personal space on the internet!
+    </p>
+
+    <div class="hero-buttons">
+      <a class="primary-btn"
+         href="https://www.youtube.com/@KESHAVplayzOFFICIAL"
+         target="_blank">
+        ▶ Visit My YouTube Channel
+      </a>
+
+      <a class="secondary-btn" href="#about">
+        Explore My Portfolio
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About <span>Me</span></h2>
+
+  <p class="section-intro">
+    Hi! I'm Keshav. I enjoy gaming, experimenting with video
+    editing and exploring the world of technology.
+    I created KeshavPlayz to share entertaining gaming content.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="big-icon">🕹️</div>
+      <h3>Gaming Enthusiast</h3>
+      <p>I enjoy playing games and discovering new gaming experiences.</p>
+    </div>
+
+    <div class="card">
+      <div class="big-icon">🎬</div>
+      <h3>Video Editing</h3>
+      <p>I enjoy learning how to make engaging and entertaining videos.</p>
+    </div>
+
+    <div class="card">
+      <div class="big-icon">💻</div>
+      <h3>Technology</h3>
+      <p>I have basic computer skills and enjoy learning new digital tools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section id="interests">
+  <h2>My <span>Interests</span></h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="big-icon">🎮</div>
+      <h3>Gaming</h3>
+      <p>Playing games, exploring new worlds and having fun.</p>
+    </div>
+
+    <div class="card">
+      <div class="big-icon">✂️</div>
+      <h3>Video Editing</h3>
+      <p>Learning editing techniques and creating videos.</p>
+    </div>
+
+    <div class="card">
+      <div class="big-icon">⚽</div>
+      <h3>Football</h3>
+      <p>Following and enjoying the game of football.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GAMING STATISTICS -->
+<section id="stats">
+  <h2>Gaming <span>Statistics</span></h2>
+
+  <p class="section-intro">
+    A little snapshot of my gaming and YouTube journey.
+    Update these numbers whenever you want!
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="big-icon">👥</div>
+      <div class="stat-number" id="subscriberStat">40</div>
+      <h3>YouTube Subscribers</h3>
+    </div>
+
+    <div class="card">
+      <div class="big-icon">🎥</div>
+      <div class="stat-number" id="videoStat">--</div>
+      <h3>Videos Uploaded</h3>
+      <p>Update this number in the settings below.</p>
+    </div>
+
+    <div class="card">
+      <div class="big-icon">🎯</div>
+      <div class="stat-number" id="viewsStat">--</div>
+      <h3>Total Views</h3>
+      <p>Update this number in the settings below.</p>
+    </div>
+
+    <div class="card">
+      <div class="big-icon">🏆</div>
+      <div class="stat-number" id="gamesStat">--</div>
+      <h3>Favourite Games</h3>
+      <p>Update this number in the settings below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSCRIBER GOALS -->
+<section id="goals">
+  <h2>My Subscriber <span>Goals 🚀</span></h2>
+
+  <p class="section-intro">
+    Every subscriber matters! Here is my roadmap for growing
+    the KeshavPlayz community.
+  </p>
+
+  <div class="goal-box">
+    <p>MY CURRENT SUBSCRIBER COUNT</p>
+    <h2><span id="currentCount">40</span> Subscribers</h2>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progressBar"></div>
+    </div>
+
+    <h3 id="progressText">80% completed</h3>
+    <p id="nextGoalText">Only 10 more subscribers to reach 50!</p>
+  </div>
+
+  <div class="grid" id="milestoneGrid"></div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <h2>Gaming <span>Achievements 🏆</span></h2>
+
+  <p class="section-intro">
+    My gaming milestones and special moments.
+    Add your real achievements as you unlock them!
+  </p>
+
+  <div class="grid" id="achievementGrid"></div>
+</section>
+
+<!-- YOUTUBE VIDEO GALLERY -->
+<section id="videos">
+  <h2>My YouTube <span>Videos 🎬</span></h2>
+
+  <p class="section-intro">
+    Check out my gaming videos and fun content on KeshavPlayz!
+  </p>
+
+  <div class="grid" id="videoGrid"></div>
+
+  <div class="hero-buttons">
+    <a class="primary-btn"
+       href="https://www.youtube.com/@KESHAVplayzOFFICIAL"
+       target="_blank">
+      Subscribe to KeshavPlayz
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Let's <span>Connect!</span></h2>
+
+  <div class="card">
+    <p>
+      Want to watch my videos? Visit my YouTube channel
+      and become part of the KeshavPlayz community!
+    </p>
+
+    <br>
+
+    <a class="primary-btn"
+       href="https://www.youtube.com/@KESHAVplayzOFFICIAL"
+       target="_blank">
+      Visit YouTube Channel →
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>Made with ❤️ by Keshav</p>
+  <p>© <span id="year"></span> KeshavPlayz. All rights reserved.</p>
+  <p><a href="#home">Back to top ↑</a></p>
+</footer>
+
+<script>
+/* =================================
+   KESHAVPLAYZ PERSONAL SETTINGS
+   EDIT YOUR DETAILS HERE
+================================= */
+
+// Current subscriber count
+const currentSubscribers = 40;
+
+// Your subscriber milestones
+const milestones = [50, 100, 500, 1000, 5000, 10000];
+
+// Update these when you know your statistics
+const gamingStats = {
+  videos: "54",
+  views: "1500",
+  games: "1"
+};
+
+// Add your real achievements here.
+// Example:
+// { icon: "🏆", title: "First 50 Subscribers",
+//   description: "Reached my first 50 subscribers!" }
+
+const achievements = [
+  {
+    icon: "🎮",
+    title: "First Gaming Video",
+    description: "My first milestone in creating gaming content."
+  },
+  {
+    icon: "📹",
+    title: "First 10 Videos",
+    description: "Completed my first 10 video uploads."
+  }
+];
+// Add your YouTube video IDs below.
+// Example video link:
+// https://www.youtube.com/watch?v=VIDEO_ID
+//
+// Put only the VIDEO_ID in the id field.
+
+const videos = [
+  {
+    title: "My Gaming Video 1",
+    id: "sjJ3P57SZhA"
+  },
+  {
+    title: "My Gaming Video 2",
+    id: "lpbC3m-iChM"
+  },
+  {
+    title: "My Gaming Video 3",
+    id: "WL7ANKSqfzc"
+  }
+];
+
+/* =================================
+   DARK / LIGHT MODE
+================================= */
+
+function toggleTheme() {
+  document.body.classList.toggle("light");
+
+  const isLight = document.body.classList.contains("light");
+
+  document.getElementById("themeButton").textContent =
+    isLight ? "🌙 Dark Mode" : "☀️ Light Mode";
+
+  localStorage.setItem("keshavTheme", isLight ? "light" : "dark");
+}
+
+const savedTheme = localStorage.getItem("keshavTheme");
+
+if (savedTheme === "light") {
+  document.body.classList.add("light");
+  document.getElementById("themeButton").textContent = "🌙 Dark Mode";
+}
+
+/* =================================
+   GAMING STATISTICS
+================================= */
+
+document.getElementById("subscriberStat").textContent =
+  currentSubscribers;
+
+document.getElementById("videoStat").textContent =
+  gamingStats.videos;
+
+document.getElementById("viewsStat").textContent =
+  gamingStats.views;
+
+document.getElementById("gamesStat").textContent =
+  gamingStats.games;
+
+/* =================================
+   SUBSCRIBER GOALS
+================================= */
+
+function updateGoals() {
+  document.getElementById("currentCount").textContent =
+    currentSubscribers;
+
+  const nextGoal = milestones.find(
+    milestone => milestone > currentSubscribers
+  );
+
+  const previousGoal =
+    [...milestones].reverse().find(
+      milestone => milestone <= currentSubscribers
+    ) || 0;
+
+  if (nextGoal) {
+    const progress =
+      ((currentSubscribers - previousGoal) /
+      (nextGoal - previousGoal)) * 100;
+
+    const remaining = nextGoal - currentSubscribers;
+
+    document.getElementById("progressBar").style.width =
+      Math.min(progress, 100) + "%";
+
+    document.getElementById("progressText").textContent =
+      Math.round(progress) + "% completed towards " + nextGoal;
+
+    document.getElementById("nextGoalText").textContent =
+      "Only " + remaining + " more subscribers to reach " +
+      nextGoal + "!";
+  } else {
+    document.getElementById("progressBar").style.width = "100%";
+
+    document.getElementById("progressText").textContent =
+      "All listed milestones reached! 🎉";
+
+    document.getElementById("nextGoalText").textContent =
+      "Time to set an even bigger goal!";
+  }
+
+  const grid = document.getElementById("milestoneGrid");
+
+  grid.innerHTML = milestones.map((goal, index) => {
+    const reached = currentSubscribers >= goal;
+
+    let status = "🔒 Upcoming";
+
+    if (reached) {
+      status = "✅ Achieved!";
+    } else if (
+      index === milestones.findIndex(
+        milestone => milestone > currentSubscribers
+      )
+    ) {
+      status = "🎯 Next Goal";
+    }
+
+    return `
+      <div class="card goal-card ${reached ? "reached" : ""}">
+        <div class="big-icon">${reached ? "🏆" : "🎯"}</div>
+        <h3>${goal.toLocaleString("en-IN")} Subscribers</h3>
+        <span class="goal-status">${status}</span>
+      </div>
+    `;
+  }).join("");
+}
+
+updateGoals();
+
+/* =================================
+   ACHIEVEMENTS GALLERY
+================================= */
+
+const achievementGrid =
+  document.getElementById("achievementGrid");
+
+if (achievements.length === 0) {
+  achievementGrid.innerHTML = `
+    <div class="card">
+      <div class="big-icon">🌟</div>
+      <h3>Your first achievement goes here!</h3>
+      <p>Keep playing, creating and learning.
+         Add your milestones in the JavaScript settings.</p>
+    </div>
+  `;
+} else {
+  achievementGrid.innerHTML = achievements.map(item => `
+    <div class="card">
+      <div class="big-icon">${item.icon}</div>
+      <h3>${item.title}</h3>
+      <p>${item.description}</p>
+    </div>
+  `).join("");
+}
+
+/* =================================
+   YOUTUBE VIDEO GALLERY
+================================= */
+
+const videoGrid = document.getElementById("videoGrid");
+
+videoGrid.innerHTML = videos.map((video, index) => {
+  const validId = /^[a-zA-Z0-9_-]{11}$/.test(video.id);
+
+  const media = validId
+    ? `<iframe
+         src="https://www.youtube-nocookie.com/embed/${video.id}"
+         title="${video.title}"
+         loading="lazy"
+         allowfullscreen>
+       </iframe>`
+    : `<div class="video-thumb">▶️</div>`;
+
+  const link = validId
+   ? `https://www.youtube.com/shorts/${video.id}`
+    : "https://www.youtube.com/@KESHAVplayzOFFICIAL";
+
+  return `
+    <div class="card video-card">
+      ${media}
+      <h3>${video.title}</h3>
+      <p>${validId ? "Watch this video." : "Add a video ID in the settings to show your video here."}</p>
+      <a href="${link}" target="_blank">Watch on YouTube →</a>
+    </div>
+  `;
+}).join("");
+
+/* =================================
+   FOOTER YEAR
+================================= */
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
